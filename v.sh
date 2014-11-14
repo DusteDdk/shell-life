@@ -16,32 +16,38 @@
 # Then chmod +x /path/to/v.sh
 #
 
+V_CWD=`pwd`
+V_OLD="$OLDPWD"
 if [ "$1" == "" ]
 then
   cd
-elif [ -d "$1" ]
+elif ! cd "$1" &> /dev/null
 then
-  cd "$1"
-elif [ -f "$1" ]
-then
-  if `file "$1" | grep ASCII &> /dev/null`
+  if cd "`dirname "$1"`" # &> /dev/null
   then
-    cd "`dirname "$1"`"
-    vim "`basename "$1"`"
-    if [ "`dirname "$1"`" != "." ]
+    if BN=`basename "$1"`; file "`readlink -f "$BN"`" | grep ASCII &> /dev/null
     then
-      if [ "`read -p "[v to stay in dir] " -n 1 A; echo $A`" != "v" ]
+      cd "`dirname "$1"`"
+      vim "`basename "$1"`"
+      if [ "`dirname "$1"`" != "." ]
       then
-        cd - &> /dev/null
+        echo "PAST: $V_CWD"
+        echo "HERE: "`pwd`
+        if [ "`read -p "[v to stay here] " -n 1 A; echo $A`" != "v" ]
+        then
+          cd "$V_CWD" &> /dev/null
+        fi
+        echo 
       fi
-      echo 
+    else
+      if [ "$1" = "-" ]
+      then
+        cd "$V_OLD"
+      else
+        echo "Not ASCII file and not directory."
+      fi
     fi
-  else
-    echo "Not ASCII file."
   fi
-elif [ "$1" == "-" ]
-then
-  cd -
-else 
-  echo -e "Error: $1 not found."
 fi
+unset V_CWD
+unset V_OLD
