@@ -31,4 +31,4 @@ unset TVAR
 # v -           - go to previous dir (if any)
 alias v='. ~/opt/v.sh'
 
-
+alias l='ls -lah --color=auto'
