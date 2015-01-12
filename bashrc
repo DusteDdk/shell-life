@@ -32,3 +32,8 @@ unset TVAR
 alias v='. ~/opt/v.sh'
 
 alias l='ls -lah --color=auto'
+
+# Requires the usejava script installed in ~/opt/ or change the path.
+# mkdir /opt/jdk/ and extract desired jdk versions into it.
+# edit USEJAVA_JDK_DIR in usejava if you want to keep JDKs in another location.
+#alias usejava='. ~/opt/usejava.sh'
