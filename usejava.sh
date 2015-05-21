@@ -8,9 +8,9 @@ then
         echo "  -- JDK versions available: "`ls "$USEJAVA_JDK_DIR"|sed "s/jdk//g"`
 else
         USEJAVA_JDK="$USEJAVA_JDK_DIR/jdk$1"
-        if ! [ -d "$JDK" ]
+        if ! [ -d "$USEJAVA_JDK" ]
         then
-                echo "Error: No jdk $JDK"
+                echo "Error: No jdk $USEJAVA_JDK"
                 unset USEJAVA_JDK
         fi
 fi
