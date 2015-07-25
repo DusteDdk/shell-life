@@ -37,3 +37,6 @@ alias l='ls -lah --color=auto'
 # mkdir /opt/jdk/ and extract desired jdk versions into it.
 # edit USEJAVA_JDK_DIR in usejava if you want to keep JDKs in another location.
 #alias usejava='. ~/opt/usejava.sh'
+
+# For VIM to display correctly, tmux needs to be started in 256 color mode.
+alias tmux="TERM=screen-256color-bce tmux"

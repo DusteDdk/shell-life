@@ -10,3 +10,7 @@ augroup collumnLimit
 augroup END
 
 colorscheme flattown
+
+syntax on
+set spell spelllang=en_us
+
