@@ -13,4 +13,4 @@ colorscheme flattown
 
 syntax on
 set spell spelllang=en_us
-
+set colorcolumn=80
